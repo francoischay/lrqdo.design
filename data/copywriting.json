@@ -1,0 +1,18 @@
+{
+  "_args": [
+    [
+      "react-router",
+      "/Users/francoischay/doc_test"
+    ]
+  ],
+  "_from": "react-router@*",
+  "_id": "react-router@1.0.3",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/react-router",
+  "_nodeVersion": "4.2.1",
+  "_npmUser": {
+    "email": "rpflorence@gmail.com",
+    "name": "ryanflorence"
+  }
+}
