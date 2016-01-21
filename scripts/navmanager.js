@@ -24,9 +24,15 @@ var navManager = {
 
   goto: function(_page){
     console.log("goto("+_page+")");
-    var state = {dest: _page}
-    this.h.pushState(state, _page, _page);
-    this.loadPage(_page.replace("#",""))
+    var URLelmts = _page.split("/");
+    var page = URLelmts[0];
+    var hash = URLelmts.shift();
+    var state = {
+      dest: page,
+      hash: hash
+    }
+    this.h.pushState(state, page, page);
+    this.loadPage(page.replace("#",""))
   },
 
   loadPage: function(_hash) {
@@ -38,7 +44,7 @@ var navManager = {
     else{
       content += ".html"
     }
-    
+
     $("#main").load(content)
   }
 }
