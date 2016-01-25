@@ -1,3 +1,82 @@
+body{
+}
+
+#main{
+  border-radius: 12px;
+  padding: 12px 24px;
+}
+
+nav{
+  background: rgba(200, 200, 200, .25);
+}
+nav h1{
+    font-size: 1.5rem;
+    padding: 8px 16px 0 16px;
+}
+
+nav .nav-pills .nav-link{
+  padding-top: 0px;
+}
+
 .hub a{
-  height: 200px;
+  height: 300px;
+  padding: 12px;
+}
+
+.hub a > div{
+    border: 1px solid rgba(200, 200, 200, .25);
+    border-radius: 12px;
+    height: 100%;
+    padding: 24px;
+}
+
+.hub a:hover{
+  text-decoration: none;
+}
+
+.hub a:hover > div{
+  background: rgba(200, 200, 200, .1);
+}
+
+.copywriting{
+    padding-top: 1rem;
+}
+
+.selects{
+    margin-bottom: 3rem;
+}
+
+.selects select{
+  border: 1px solid lightgrey;
+  padding: 12px;
+  border-radius: 3px;
+  margin-right: 12px;
+}
+
+@media (max-width: 544px) {
+  .selects select{
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+}
+
+.copy-example{
+  border: 1px solid lightgrey;
+  padding: 12px 18px;
+  margin-top: 12px;
+  box-shadow: -2px 2px rgba(200, 200, 200, .25);
+}
+
+.advices li{
+  margin-bottom: .5rem;
+}
+
+.copy-example, .advices{
+  font-family: Georgia;
+  font-size: 1.1rem;
+}
+
+h3{
+  font-size: 0.8rem;
+  text-transform: uppercase;
 }

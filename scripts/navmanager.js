@@ -11,7 +11,7 @@ var navManager = {
   },
 
   setNavListeners: function(){
-    $("body").on("click", "nav a, .hub a", {scope: this}, function(_e){
+    $("body").on("click", ".nav a, .hub a", {scope: this}, function(_e){
       _e.preventDefault();
       var dest = _e.currentTarget.getAttribute("href");
       _e.data.scope.goto(dest);
@@ -26,11 +26,13 @@ var navManager = {
     console.log("goto("+_page+")");
     var URLelmts = _page.split("/");
     var page = URLelmts[0];
-    var hash = URLelmts.shift();
+    var hash = _.toArray(URLelmts).slice(1);
+        hash = hash.join("/");
     var state = {
       dest: page,
       hash: hash
     }
+
     this.h.pushState(state, page, page);
     this.loadPage(page.replace("#",""))
   },
