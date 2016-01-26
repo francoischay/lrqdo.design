@@ -60,6 +60,29 @@ nav .nav-pills .nav-link{
   }
 }
 
+.copywriting .content .situation,
+.copywriting .content .emotion{
+  padding: 12px;
+}
+
+.copywriting .content .situation h2,
+.copywriting .content .emotion h2{
+  border: 1px solid rgba(200, 200, 200, .25);
+  border-radius: 12px;
+  padding: 24px;
+  cursor: pointer;
+}
+
+.copywriting .content .emotion[data-disabled=disabled]{
+  opacity: .25;
+  pointer-events: none;
+}
+
+.copywriting .content .situation h2:hover,
+.copywriting .content .emotion h2:hover{
+  background: rgba(200, 200, 200, .1);
+}
+
 .copy-example{
   border: 1px solid lightgrey;
   padding: 12px 18px;
