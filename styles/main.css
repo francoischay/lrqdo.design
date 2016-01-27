@@ -43,7 +43,7 @@ nav .nav-pills .nav-link{
 }
 
 .selects{
-    margin-bottom: 3rem;
+  display: none;
 }
 
 .selects select{
@@ -58,6 +58,21 @@ nav .nav-pills .nav-link{
     margin-bottom: 1rem;
     width: 100%;
   }
+}
+
+.pills{
+    height: 4rem;
+}
+
+.pill {
+    padding: 6px 18px 6px 12px;
+    background: black;
+    color: white;
+    display: inline-block;
+    border-radius: 2rem;
+    line-height: 2rem;
+    margin-right: 12px;
+    cursor: pointer;
 }
 
 .copywriting .content .situation,
@@ -96,7 +111,7 @@ nav .nav-pills .nav-link{
 
 .copy-example, .advices{
   font-family: Georgia;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
 }
 
 h3{

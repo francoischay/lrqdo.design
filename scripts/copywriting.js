@@ -19,6 +19,12 @@ $(function() {
         .on("click", ".emotion", {scope: this}, function(_e){
           _e.data.scope.selectEmotion($(_e.currentTarget).attr("data-emotion"));
         })
+        .on("click", ".pill-situation", {scope: this}, function(_e){
+          _e.data.scope.onSelectSituation();
+        })
+        .on("click", ".pill-emotion", {scope: this}, function(_e){
+          _e.data.scope.onSelectEmotion();
+        })
     },
 
     setData: function(_data){
@@ -77,15 +83,23 @@ $(function() {
     },
 
     selectEmotion: function(_emotion){
-      console.log("selectEmotion(" + _emotion + ")")
       $("[name=emotions] option[value='"+_emotion+"']").prop("selected", true);
       $("[name=emotions]").trigger("change");
     },
 
     onSelectSituation: function(_situation){
+      if(_situation == undefined){
+        navManager.goto("#copywriting")
+      }
+
       this.currentSituations = situations[_situation];
       $(".content").html("");
       $("[name=emotions]").remove();
+
+      var pill = "<span class='pill pill-situation'><span class='value'>"+_situation+"</span> &nbsp;&times;</span>";
+      $(".pills").html("")
+      $(".pills").append(pill);
+
       var emotionsSelect = "<select name='emotions'>";
           emotionsSelect += "<option>Select an emotion</option>";
       var emotionsHub = "<div class='row'>";
@@ -114,6 +128,14 @@ $(function() {
     },
 
     onSelectEmotion: function(_e) {
+      if(_e == undefined){
+        this.selectSituation($(".pill-situation .value"));
+        return;
+      }
+
+      var pill = "<span class='pill pill-emotion'><span class='value'>"+_e.target.value+"</span> &nbsp;&times;</span>";
+      if($(".pill").length < 2) $(".pills").append(pill);
+
       _.each(this.currentSituations, $.proxy(function(_key){
         if(this.data[_key].Emotion == _e.target.value){
           this.createContent(this.data[_key])

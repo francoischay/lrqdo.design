@@ -2,6 +2,7 @@ var navManager = {
   h: window.history,
 
   init: function(){
+    console.log("init")
     this.setNavListeners();
     this.goto(window.location.hash);
   },
@@ -11,6 +12,7 @@ var navManager = {
   },
 
   setNavListeners: function(){
+    console.log("setNavListeners")
     $("body").on("click", ".nav a, .hub a", {scope: this}, function(_e){
       _e.preventDefault();
       var dest = _e.currentTarget.getAttribute("href");
@@ -38,6 +40,7 @@ var navManager = {
   },
 
   loadPage: function(_hash) {
+    console.log("loadPage")
     var content = _hash;
 
     if(_hash.length <= 1){
