@@ -1,19 +1,35 @@
 <div class='row'>
-  <div class='col-md-5'>
+  <div class='col-md-12'>
     <h3>Conseils</h3>
     <ul class='advices'>
-      <li><%= advice1 %></li>
-      <li><%= advice2 %></li>
-      <li><%= advice3 %></li>
-      <li><%= advice4 %></li>
+      <% if (advice1) { %>  <li><%= advice1 %></li><% }  %>
+      <% if (advice2) { %>  <li><%= advice2 %></li><% }  %>
+      <% if (advice3) { %>  <li><%= advice3 %></li><% }  %>
+      <% if (advice4) { %>  <li><%= advice4 %></li><% }  %>
+      <% if (advice5) { %>  <li><%= advice5 %></li><% }  %>
     </ul>
   </div>
-  <div class='col-md-5 col-md-offset-1'>
-    <h3>Exemple</h3>
-    <%= situation %>
-    <em>pour</em> un <%= role %>
+</div>
+<div class="row">
+  <div class='col-md-4'>
+    <h3>Membre</h3>
+    <%= memberSituation %>
     <div class='copy-example'>
-      <%= example %>
+      <%= memberExample %>
+    </div>
+  </div>
+  <div class='col-md-4'>
+    <h3>Responsable</h3>
+    <%= hostSituation %>
+    <div class='copy-example'>
+      <%= hostExample %>
+    </div>
+  </div>
+  <div class='col-md-4'>
+    <h3>Producteur</h3>
+    <%= prodSituation %>
+    <div class='copy-example'>
+      <%= prodExample %>
     </div>
   </div>
 </div>

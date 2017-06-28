@@ -36,10 +36,8 @@ $(function() {
     },
 
     loadData: function(){
-      //$.getJSON("https://sheetsu.com/apis/ec6cd14f", function(_data){
-      $.getJSON("data/copywriting.json", $.proxy(function(_data){
-        this.setData(_data.result);
-
+      $.getJSON("https://sheetsu.com/apis/v1.0/e83e7a636b9e", $.proxy(function(_data){
+        this.setData(_data);
         links = {};
         situations = {};
         emotions = {};
@@ -48,18 +46,20 @@ $(function() {
             situationsSelect += "<option>Select a situation</option>";
         var situationsHub = "<div class='row'>";
 
-        var data = $.map(_data.result, function(_val, _i){
+        var data = $.map(_data, function(_val, _i){
           var s = [];
-          if(situations[_val.Situation]){
-            s = situations[_val.Situation].slice(0);
+          console.log(_val)
+          console.log(situations[_val.SituationLabel])
+          if(situations[_val.SituationLabel]){
+            s = situations[_val.SituationLabel].slice(0);
+            console.log(s)
           }
           else{
-            situationsSelect += "<option value='"+_val.Situation+"'>"+_val.Situation+"</option>";
-            situationsHub += "<div class='col-md-6 situation' data-situation='" + _val.Situation + "'><h2>" + _val.Situation + "</h2></div>";
+            situationsSelect += "<option value='"+_val.SituationLabel+"'>"+_val.Situation+"</option>";
+            situationsHub += "<div class='col-md-12 situation' data-situation='" + _val.SituationLabel + "'><h2>" + _val.Situation + "</h2></div>";
           }
-
           s.push(_i)
-          situations[_val.Situation] = s;
+          situations[_val.SituationLabel] = s;
         })
 
         situationsSelect += "</select>";
@@ -93,6 +93,7 @@ $(function() {
       }
 
       this.currentSituations = situations[_situation];
+
       $(".content").html("");
       $("[name=emotions]").remove();
 
@@ -110,8 +111,10 @@ $(function() {
           disabled = "disabled";
         }
 
-        emotionsSelect += "<option value='"+this.data[_key].Emotion+"' " + disabled + ">"+this.data[_key].Emotion+"</option>";
-        emotionsHub += "<div class='col-md-6 emotion' data-disabled='" + disabled + "' data-emotion='" + this.data[_key].Emotion + "'><h2>" + this.data[_key].Emotion + "</h2></div>";
+        console.log(this.data[_key])
+
+        emotionsSelect += "<option value='"+this.data[_key].EmotionLabel+"' " + disabled + ">"+this.data[_key].Emotion+"</option>";
+        emotionsHub += "<div class='col-md-6 emotion' data-disabled='" + disabled + "' data-emotion='" + this.data[_key].EmotionLabel + "'><h2>" + this.data[_key].Emotion + "</h2></div>";
       }, this))
 
       emotionsSelect += "</select>";
@@ -133,11 +136,12 @@ $(function() {
         return;
       }
 
-      var pill = "<span class='pill pill-emotion'><span class='value'>"+_e.target.value+"</span> &nbsp;&times;</span>";
+      var pill = "<span class='pill pill-emotion' data-emotion='" + _e.target.value + "'><span class='value'>"+_e.target.value+"</span> &nbsp;&times;</span>";
       if($(".pill").length < 2) $(".pills").append(pill);
 
       _.each(this.currentSituations, $.proxy(function(_key){
-        if(this.data[_key].Emotion == _e.target.value){
+        console.log()
+        if(this.data[_key].EmotionLabel == _e.target.value){
           this.createContent(this.data[_key])
         }
       }, this))
@@ -156,9 +160,13 @@ $(function() {
         advice2: _data["Conseil 2"],
         advice3: _data["Conseil 3"],
         advice4: _data["Conseil 4"],
-        situation: _data["Exemple de situation"],
-        role: _data["Qui"],
-        example: _data["Exemple de rédactionnel"]
+        advice5: _data["Conseil 5"],
+        memberSituation: _data["MemberSituation"],
+        memberExample: _data["MemberExample"],
+        hostSituation: _data["HostSituation"],
+        hostExample: _data["HostExample"],
+        prodSituation: _data["ProdSituation"],
+        prodExample: _data["ProdExample"]
       }
 
       $.get("templates/copy-example.html", $.proxy(function(_template){

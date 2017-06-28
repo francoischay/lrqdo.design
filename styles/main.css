@@ -18,6 +18,16 @@ nav .nav-pills .nav-link{
   padding-top: 0px;
 }
 
+.disabled{
+   pointer-events: none;
+   cursor: default;
+   opacity: .5
+}
+
+nav .nav{
+  display: none;
+}
+
 .hub a{
   height: 300px;
   padding: 12px;
@@ -77,14 +87,14 @@ nav .nav-pills .nav-link{
 
 .copywriting .content .situation,
 .copywriting .content .emotion{
-  padding: 12px;
+  padding: 6px;
 }
 
 .copywriting .content .situation h2,
 .copywriting .content .emotion h2{
   border: 1px solid rgba(200, 200, 200, .25);
   border-radius: 12px;
-  padding: 24px;
+  padding: 12px;
   cursor: pointer;
 }
 
@@ -117,4 +127,5 @@ nav .nav-pills .nav-link{
 h3{
   font-size: 0.8rem;
   text-transform: uppercase;
+  margin-top: 3rem;
 }
